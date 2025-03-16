@@ -1,15 +1,10 @@
 from django.db import models
-from users.models import landlord
+from users.models import Landlord
 
 # Create your models here.
-class Amenty(models.Model):
+class Amenity(models.Model):
     name=models.CharField(max_length=255)
-    """category = models.CharField(max_length = 100,
-    choices =[
-        ('utilities','Utilities'),
-        ('furniture' ,'Furniture and Appliances'),
-        ('services',('Services'))
-    ] )"""
+    
     def __str__(self):
         return self.name
 
@@ -29,7 +24,7 @@ class Campus(models.Model):
         ('girls_only','Girls_Only'),
         ('mixed','Mixed'),
     ]
-    owner=models.ForeignKey(landlord,on_delete=models.CASCADE,related_name='houses')
+    owner=models.ForeignKey(Landlord,on_delete=models.CASCADE,related_name='houses')
     name=models.CharField(max_length=255)
     address=models.CharField(max_length=255)
     latitude=models.DecimalField(max_digits=10,decimal_places=7,blank=False,null=False)
@@ -38,11 +33,11 @@ class Campus(models.Model):
     distance=models.DecimalField(max_digits=10,decimal_places=7,blank=False,null=False)
     roomfor = models.IntegerField()
     rules = models.ManyToManyField(Rules)
-    amenties=models.ManyToManyField(Amenty)
+    amenities=models.ManyToManyField(Amenity)
     description=models.TextField(blank=True,null=True)
     Refundable=models.BooleanField(default=False)
     gender_options = models.CharField(max_length = 10 , choices=GENDER_CHOICES)
-    image=models.ManyToManyField(Image,blank=False)
+    images=models.ManyToManyField(Image,blank=False)
     videos=models.ManyToManyField(Video,blank=False)
     blacklist = models.BooleanField(default=False)
 

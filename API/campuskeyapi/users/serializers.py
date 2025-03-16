@@ -1,15 +1,15 @@
 from rest_framework import serializers
-from .models import Agent,landlord,Student
+from .models import Landlord,Student,CustomUser
 
-class AgentSerializer(serializers.ModelSerializer):
-    class Meta:
-        model=Agent
-        fields='__all__'
 class landlordSerializer(serializers.ModelSerializer):
     class Meta:
-        model=landlord
+        model=Landlord
         fields='__all__'
 class StudentSerializer(serializers.ModelSerializer):
     class Meta:
         model=Student
         fields='__all__'
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=CustomUser
+        field='__all__'

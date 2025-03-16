@@ -22,3 +22,7 @@ urlpatterns = [
     re_path(r'^', include('off_campus.urls')),
     re_path(r'^', include('users.urls')),
 ]
+
+urlpatterns +=[
+    path("api-auth/",include('rest_framework.urls')),
+]
