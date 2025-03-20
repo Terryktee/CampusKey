@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import {logo} from "../../public/logo.jpg"
+
 export default function LoginPage({
   className,
   ...props
@@ -13,7 +13,7 @@ export default function LoginPage({
       <div className="w-full max-w-sm md:max-w-3xl">
         <div className={cn("flex flex-col gap-6", className)}>
           <Card className="overflow-hidden">
-            <CardContent className="grid p-0 md:grid-cols-2">
+            <CardContent className="grid p-0 space-between-10 md:grid-cols-2">
               <form className="p-6 md:p-8">
                 <div className="flex flex-col gap-6">
                   <div className="flex flex-col items-center text-center">
@@ -27,7 +27,7 @@ export default function LoginPage({
                     <Input
                       id="email"
                       type="email"
-                      placeholder="m@example.com"
+                      placeholder="studentnumber@school.nust.ac.zw"
                       required
                     />
                   </div>
@@ -69,8 +69,8 @@ export default function LoginPage({
                     </Button>
                   </div>
                   <div className="text-center text-sm">
-                    Don&apos;t have an account?{" "}
-                    <a href="#" className="underline underline-offset-4 text-[#0D6CA3]">
+                    Don&apos;t have an account?{""}
+                    <a href="/registration" className="underline underline-offset-4 text-[#0D6CA3]">
                       Sign Up
                     </a>
                   </div>
@@ -80,7 +80,7 @@ export default function LoginPage({
                 <img
                   src="/logo.jpg"
                   alt="Image"
-                  className="absolute inset-0 h-full w-full object-fit dark:brightness-[0.2] dark:grayscale"
+                  className="absolute rounded-lg inset-0 h-full w-full object-fit dark:brightness-[0.2] dark:grayscale"
                 />
               </div>
             </CardContent>
