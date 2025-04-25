@@ -1,86 +1,75 @@
-import Nav from "../components/nav"
-import Footer from "../components/footer"
+import Nav from "../components/nav";
+import Footer from "../components/footer";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import Filters from "../components/filters";
+import HouseCard from "../components/house_card";
+
+
 export default function Home() {
   return (
     <div>
-      {/* Navigation Code*/}
       <Nav />
-      {/* Main Container Code*/}
       <main>
-        {/* Searchbar Code*/}
-        <div className="search-box">
-          <h1>Find your off-campus home</h1>
-          <div className="search">
-            <input type="search" name="search" placeholder="search by location or university"></input>
-            <button>Search</button>
+        
+        <div className="h-56 place-items-center bg-blue-400 py-16 ">
+          <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl text-white">Find your off-campus home</h1>
+          <div className="flex w-full max-w-lg space-x-2 py-6">
+            <Input type="search"  placeholder="Search" />
+            <Button type="submit " className="bg-white text-sky-400 rounded-lg">Search</Button>
           </div>
+
         </div>
-        {/* filter Code*/}
-        <div className="filter-box">
-          <select>
-            <option>Property type</option>
-            <option>Boys Only</option>
-            <option>Girls Only</option>
-            <option>Mixed</option>
-          </select>
-          <select>
-            <option>Distance</option>
-          </select>
-          <select>
-            <option>Price Range</option>
-          </select>
-          <select>
-            <option>More filters</option>
-          </select>
-          <div className="sort">
-            <p>Sort by:</p>
-            <select>
-              <option>Recommendation</option>
-            </select>
-          </div>
-        </div>
+        <Filters />
         {/* Properties Code*/}
-        <div>
-          <div className="left-box">
-            <h1>Facilities</h1>
-           <label><input type="checkbox"/> wifi</label> 
-           <label><input type="checkbox"/> Back up Zesa</label> 
-           <label><input type="checkbox"/> Backup Water</label> 
-           <label><input type="checkbox"/> Gas Stove</label> 
-           <label><input type="checkbox"/> Beds</label> 
-           <label><input type="checkbox"/> Fridge</label> 
-           <label><input type="checkbox"/> Insuit</label> 
-           <label><input type="checkbox"/> Chair and Desk</label> 
-            <h1>Services</h1>
-            <label><input type="checkbox"/> Security</label> 
-            <label><input type="checkbox"/>Care taker</label> 
-            <h1>Room Type</h1>
-            <input type="radio"/><label>Room of 1</label> 
-            <input type="radio"/><label>Room of 2</label> 
-            <input type="radio"/><label>Room of 3</label> 
-            <input type="radio"/><label>room for more than 3</label> 
+        <div className="flex flex-row justify-center-safe p-2">
+
+          <div className=" flex flex-col p-2 w-1/3">
+            <div>
+              <h1 className="scroll-m-20 text-xl font-semibold tracking-tight">Facilities</h1>
+              <ul className="grid grid-rows-2 gap-2 p-2">
+                <li><input type="checkbox" /> wifi</li>
+                <li><input type="checkbox" /> Backup Zesa</li>
+                <li><input type="checkbox" /> Backup Water</li>
+                <li><input type="checkbox" /> GasStove</li>
+                <li><input type="checkbox" /> Beds</li>
+                <li><input type="checkbox" /> Fridge</li>
+                <li><input type="checkbox" /> Insuit</li>
+                <li><input type="checkbox" /> Chair and Desk</li>
+              </ul>
+            </div>
+            <div>
+              <h1 className="scroll-m-20 text-xl font-semibold tracking-tight">Services</h1>
+              <ul className="grid grid-rows-2 gap-2 p-2">
+                <li><input type="checkbox" /> Security</li>
+                <li><input type="checkbox" />Care taker</li>
+              </ul>
+            </div>
+            <div>
+            <h1 className="scroll-m-20 text-xl font-semibold tracking-tight">Room Type</h1>
+            <ul className="grid grid-rows-2 gap-2 p-2">
+                <li><input type="checkbox" /> Room of 1</li>
+                <li><input type="checkbox" />Room of 2</li>
+                <li><input type="checkbox" />Room of 3</li>
+                <li><input type="checkbox" />Room of more than 3</li>
+              </ul>      
+            </div>
           </div>
-          <div className="right-box">
-            <h1>Available off-campus houses</h1>
-            <div className="">
-              <div className="">
-                <img src="image" alt="House Image"></img>
-                {/* OverView of Verified or not*/}
-                <h1>Off-Campus title + price</h1>
-                <h1>Distance</h1>
-                <h1>Room type</h1>
-                <h1>Bathrooms</h1>
-                <h1>Facilities + services </h1>
-                <h1>Stars</h1>
-                <button>View Details</button>
-              </div>
+          <div className="right-box  p-2 ">
+            <h1 className="scroll-m-20 text-2xl font-extrabold tracking-tight lg:text-3xl text-blue-400 text-center">Available off-campus houses</h1>
+            <div className=" grid grid-cols-4 gap-2 py-4 text-blue-400 ">
+              <HouseCard />
+              <HouseCard />
+              <HouseCard />
+              <HouseCard />
+              <HouseCard />
             </div>
           </div>
         </div>
       </main>
       {/* footer Code*/}
       <footer>
-      <Footer />
+        <Footer />
       </footer>
     </div>
   );

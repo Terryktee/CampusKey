@@ -1,79 +1,42 @@
 export default function Home() {
     return (
-      <div>
+      <footer className="grid grid-cols-4 bg-blue-400 p-2 text-white">
         {/* footer Code*/}
-        <h1>About CampusKey</h1>
+        <div>
+        <h1 className="scroll-m-20 text-2xl font-extrabold tracking-tight lg:text-3xl">About CampusKey</h1>
+        <p className="leading-7 [&:not(:first-child)]:mt-6">CampusKey is an innovative solution designed to simplify the search for student accommodation </p>
+        </div>
+
+        <div>
+          <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">About Us</h3>
         <ul>
-            <li>About Us</li>
             <li>Team</li>
             <li>How it works</li>
             <li>Careers</li>
+            <li>About Us</li>
         </ul>
-        <h1>Resources</h1>
+        </div>
+        <div>
+        <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">Resources</h3>
         <ul>
             <li>Help Center</li>
             <li>Student Guide</li>
         </ul>
-        <h1>Legal</h1>
+        </div>
+        <div>
+        <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">Legal</h3>
         <ul>
             <h1>Terms of Services</h1>
             <li>Privacy Policy</li>
             <li>Disclaimer</li>
         </ul>
-
-        <div>
-            <p>@copyright 2025</p>
         </div>
-        <Card className="overflow-hidden bg-transparent  ">
-            <CardTitle >Step {step} of 4</CardTitle>
+      
+        <div className="py-2">
+        <p className="text-center">&copy; 2025 Kerville Inc. All rights reserved.</p>
+        </div>
 
-            {/* Adjust content layout based on step */}
-            <CardContent className={`p-0 ${step === 3 || step ===4 ? "flex justify-center" : "grid md:grid-cols-2"}`}>
-              <div className="p-6 md:p-8 space-y-6 w-full">
-                {stepComponents[step]}
-
-                <div className="flex flex-row space-x-4">
-                  {step > 1 && (
-                    <Button
-                      onClick={handlePreviousStep}
-                      className="py-2 px-4 rounded-full text-white bg-gray-500"
-                    >
-                      Back
-                    </Button>
-                  )}
-                  {step < 4 ? (
-                    <Button
-                      onClick={handleNextStep}
-                      className="py-2 px-4 rounded-full text-white bg-[#0D6CA3]"
-                    >
-                      Continue
-                    </Button>
-                  ) : (
-                    <Button
-                      onClick={() => alert("Form submitted!")}
-                      className="py-2 px-4 rounded-full text-white bg-green-600"
-                    >
-                      Submit
-                    </Button>
-                  )}
-                </div>
-              </div>
-
-              {/* Hide Image on Step 3 and Step 4 */}
-              {step !== 3 && step !==4 && (
-                <div className="relative hidden bg-muted md:block">
-                  <Image
-                    src="/logo.jpg"
-                    alt="CampusKey Logo"
-                    layout="fill"
-                    className="absolute object-fit rounded-lg dark:brightness-[0.2] dark:grayscale"
-                  />
-                </div>
-              )}
-            </CardContent>
-          </Card>
-
-      </div>
+      </footer>
     );
   }
   
