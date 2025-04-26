@@ -8,7 +8,7 @@ export default function houseCard() {
     return (
         <div className="rounded-lg border-0 shadow p-4 gap-x-8 gap-y-4 font-bold">
             <div className="space-y-2 leading-7 [&:not(:first-child)]:mt-6">
-                <img src="home.jpg" className="rounded-lg" alt="House Image"></img>
+                <img src="home.jpg" className="rounded-lg" alt="House Image" />
                 {/* OverView of Verified or not*/}
                 <div className="flex flex-col text-base">
                     <div className="text-xl">Gunda <Badge>Verified</Badge></div>
