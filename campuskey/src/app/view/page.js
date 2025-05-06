@@ -1,8 +1,8 @@
 "use client";
 import Amenities from "@/components/res_amenties/amenties";
-import Nav from "../components/nav";
+import Nav from "../../components/navbar/nav";
 import PhotoAlbum from "@/components/image-gallery/image-library";
-import Footer from "../components/footer";
+import Footer from "../../components/footer/footer";
 import { VscGitStashApply } from "react-icons/vsc";
 
 import { BellRing } from "lucide-react"

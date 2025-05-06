@@ -1,9 +1,9 @@
-import Nav from "../components/nav";
-import Footer from "../components/footer";
+import Nav from "@/components/navbar/nav";
+import Footer from "@/components/footer/footer";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import Filters from "../components/filters";
-import HouseCard from "../components/house_card";
+import Filters from "@/components/filters/filters";
+import HouseCard from "@/components/card/house_card";
 
 
 export default function Home() {
@@ -15,7 +15,7 @@ export default function Home() {
         <div className="h-56 place-items-center bg-blue-400 py-16 ">
           <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl text-white">Find your off-campus home</h1>
           <div className="flex w-full max-w-lg space-x-2 py-6">
-            <Input type="search"  placeholder="Search" />
+            <Input type="search" className="rounded-full" placeholder="Search" />
             <Button type="submit " className="bg-white text-sky-400 rounded-lg">Search</Button>
           </div>
 
