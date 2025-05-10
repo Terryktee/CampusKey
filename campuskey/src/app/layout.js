@@ -1,4 +1,5 @@
 import {  Poppins } from "next/font/google";
+import { Providers } from "@/redux/provider";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -20,7 +21,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${poppins.variable} ${poppins.variable} antialiased`}
       >
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

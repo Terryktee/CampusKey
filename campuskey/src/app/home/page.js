@@ -3,7 +3,7 @@ import Footer from "@/components/footer/footer";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Filters from "@/components/filters/filters";
-import HouseCard from "@/components/card/house_card";
+import HouseCard from "@/components/housecard/house_card";
 
 
 export default function Home() {
