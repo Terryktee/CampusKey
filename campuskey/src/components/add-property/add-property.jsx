@@ -1,8 +1,9 @@
 import PropertyCard from "@/components/property-card/property-card"
+
 export default function AddPropertyPage(){
 
     return(
-
+        
         <>
         <h1 className="px-4">Add your students accommodation listings</h1>
         <div className="slider flex flex-col gap-4">
@@ -14,7 +15,7 @@ export default function AddPropertyPage(){
                     <h1>Property Details</h1>
             </div>
 
-            <div class="grid place-content-center ">
+            <div className="grid place-content-center ">
                 <div className="w-16 h-[2px] bg-gray-300"></div>
             </div>
 
@@ -25,7 +26,7 @@ export default function AddPropertyPage(){
                     <h1>Amenties</h1>
             </div>
 
-            <div class="grid place-content-center ">
+            <div className="grid place-content-center ">
                 <div className="w-16 h-[2px] bg-gray-300"></div>
             </div>
 
@@ -37,7 +38,7 @@ export default function AddPropertyPage(){
             
             </div>
 
-            <div class="grid place-content-center ">
+            <div className="grid place-content-center ">
                 <div className="w-16 h-[2px] bg-gray-300"></div>
             </div>
             

@@ -32,6 +32,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
+import Link from "next/link"
 
 const data = {
   user: {
@@ -42,27 +43,27 @@ const data = {
   navMain: [
     {
       title: "Dashboard",
-      url: "#",
+      url: "/dashboard",
       icon: LayoutDashboardIcon,
     },
     {
       title: "Applications",
-      url: "#",
+      url: "dashboard/Applications",
       icon: ListIcon,
     },
     {
       title: "Analytics",
-      url: "#",
+      url: "dashboard/Analytics",
       icon: BarChartIcon,
     },
     {
       title: "Property",
-      url: "#",
+      url: "dashboard/property",
       icon: FolderIcon,
     },
     {
       title: "Students",
-      url: "#",
+      url: "dashboard/students",
       icon: UsersIcon,
     },
   ],
@@ -71,62 +72,62 @@ const data = {
       title: "Capture",
       icon: CameraIcon,
       isActive: true,
-      url: "#",
+      url: "dashboard/Capture",
       items: [
-        { title: "Active Proposals", url: "#" },
-        { title: "Archived", url: "#" },
+        { title: "Active Proposals", url: "dashboard/Proposals" },
+        { title: "Archived", url: "dashboard/Archived" },
       ],
     },
     {
       title: "Proposal",
       icon: FileTextIcon,
-      url: "#",
+      url: "dashboard/",
       items: [
-        { title: "Active Proposals", url: "#" },
-        { title: "Archived", url: "#" },
+        { title: "Active Proposals", url: "dashboard/" },
+        { title: "Archived", url: "dashboard/" },
       ],
     },
     {
       title: "Prompts",
       icon: FileCodeIcon,
-      url: "#",
+      url: "dashboard/",
       items: [
-        { title: "Active Proposals", url: "#" },
-        { title: "Archived", url: "#" },
+        { title: "Active Proposals", url: "dashboard/" },
+        { title: "Archived", url: "dashboard/" },
       ],
     },
   ],
   navSecondary: [
     {
       title: "Settings",
-      url: "#",
+      url: "dashboard/Settings",
       icon: SettingsIcon,
     },
     {
       title: "Get Help",
-      url: "#",
+      url: "dashboard/Get-help",
       icon: HelpCircleIcon,
     },
     {
       title: "Search",
-      url: "#",
+      url: "dashboard/Search",
       icon: SearchIcon,
     },
   ],
   documents: [
     {
       name: "Data Library",
-      url: "#",
+      url: "dashboard/data-library",
       icon: DatabaseIcon,
     },
     {
       name: "Reports",
-      url: "#",
+      url: "dashboard/Reports",
       icon: ClipboardListIcon,
     },
     {
       name: "Word Assistant",
-      url: "#",
+      url: "dashboard/Word-assistant",
       icon: FileIcon,
     },
   ],
@@ -142,7 +143,7 @@ export default function AppSidebar(props) {
               asChild
               className="data-[slot=sidebar-menu-button]:!p-1.5"
             >
-              <a href="#">
+              <a href="dashboard/">
                 <ArrowUpCircleIcon className="h-5 w-5" />
                 <span className="text-base font-semibold">CampusKey Inc.</span>
               </a>

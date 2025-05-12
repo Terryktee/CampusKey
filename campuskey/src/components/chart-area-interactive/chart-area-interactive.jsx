@@ -21,6 +21,12 @@ const ChartArea = () => {
     return date >= startDate;
   });
 
+  const dateFormatter = new Intl.DateTimeFormat("en-US", {
+  month: "short",
+  day: "numeric",
+  timeZone: "UTC",
+});
+
   return (
     <Card className="p-4">
       <CardHeader className="flex flex-row items-center justify-between">
@@ -53,24 +59,13 @@ const ChartArea = () => {
               <stop offset="95%" stopColor="#82ca9d" stopOpacity={0.1} />
             </linearGradient>
           </defs>
-          <XAxis
-            dataKey="date"
-            tickFormatter={(value) =>
-              new Date(value).toLocaleDateString("en-US", {
-                month: "short",
-                day: "numeric",
-              })
-            }
+         <XAxis 
+         dataKey="date" 
+         tickFormatter={(value) => dateFormatter.format(new Date(value))}
           />
-          <CartesianGrid strokeDasharray="3 3" />
-          <Tooltip
-            labelFormatter={(value) =>
-              new Date(value).toLocaleDateString("en-US", {
-                month: "short",
-                day: "numeric",
-              })
-            }
-          />
+         <Tooltip 
+         labelFormatter={(value) => dateFormatter.format(new Date(value))} 
+         />
           <Area
             type="monotone"
             dataKey="mobile"
