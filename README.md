@@ -116,8 +116,7 @@ Coming soon: [https://campuskey.co.zw](https://campuskey.co.zw)
 
 ## 📬 Contact
 
-Developed with ❤️ by [Tawanda Kapumha](https://linkedin.com/in/terryktee)
-📧 Email: [n02422803p@students.nust.ac.zw](mailto:n02422803p@students.nust.ac.zw)
+Developed with ❤️ by [Terryktee](https://linkedin.com/in/terryktee)
 🌐 Website: [https://Karvellie.co.zw](https://Karvellie.co.zw)
 
 ---
