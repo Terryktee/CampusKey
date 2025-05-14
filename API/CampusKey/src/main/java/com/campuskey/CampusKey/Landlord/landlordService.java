@@ -21,7 +21,7 @@ public class landlordService {
         return landlordRepository.findAll();
     }
 
-
+    
     public void addNewlandlord(landlord landlord) throws IllegalAccessException{
         Optional <landlord> landbyOptional = landlordRepository.findByEmail(
             landlord.getEmail()
