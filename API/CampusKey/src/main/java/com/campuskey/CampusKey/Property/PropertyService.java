@@ -3,6 +3,7 @@ package com.campuskey.CampusKey.property;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
@@ -17,20 +18,35 @@ public class PropertyService {
         this.propertyRepository = propertyRepository;
     }
 
-    public List<Property> getProperty() {
+    /*public List<Property> getProperty() {
         return propertyRepository.findAll();
     }
 
     public Property getPropertyById(Long propertyId) {
         return propertyRepository.findById(propertyId)
                 .orElseThrow(() -> new RuntimeException("Property not found"));
+    }*/
+     public List<propertyDTO> getAllProperties() {
+        return propertyRepository.findAll()
+                .stream()
+                .map(propertyDTO::new)
+                .collect(Collectors.toList());
     }
 
-    public List<Property> searchProperties(String landlordName, String propertyAddress) {
-        if (landlordName != null && propertyAddress != null) {
-            return propertyRepository.findByLandlord_NameContainingAndPropertyAddressContaining(landlordName, propertyAddress);
+    public Optional<propertyDTO> getPropertyById(Long propertyId) {
+        return propertyRepository.findById(propertyId)
+                .map(propertyDTO::new);
+    }
+
+    public List<Property> searchProperties(String landlordName, String propertyAddress, String propertyName) {
+        if (landlordName != null && propertyAddress != null && propertyAddress != null) {
+            return propertyRepository.findByLandlord_NameContainingAndPropertyAddressContainingAndPropertyNameContaining(
+    landlordName, propertyAddress, propertyName
+);
         } else if (landlordName != null) {
             return propertyRepository.findByLandlord_NameContaining(landlordName);
+        }else if(propertyName != null) {
+            return propertyRepository.findByPropertyNameContaining(propertyName);
         } else if (propertyAddress != null) {
             return propertyRepository.findByPropertyAddressContaining(propertyAddress);
         } else {

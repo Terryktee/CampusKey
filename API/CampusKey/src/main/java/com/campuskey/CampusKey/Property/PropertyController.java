@@ -1,6 +1,7 @@
 package com.campuskey.CampusKey.property;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -25,24 +26,41 @@ public class PropertyController {
     public PropertyController(PropertyService propertyService) {
         this.propertyService = propertyService;
     }
-
-    @GetMapping
+/* 
+ * @GetMapping
     public List<Property> getProperty() {
         return propertyService.getProperty();
-    }
-
-    @GetMapping("/search")
-    public ResponseEntity<List<Property>> getAllProperties(
-            @RequestParam(required = false) String landlord,
-            @RequestParam(required = false) String address) {
-        List<Property> properties = propertyService.searchProperties(landlord, address);
-        return ResponseEntity.ok(properties);
     }
 
     @GetMapping("/{propertyId}")
     public ResponseEntity<Property> getPropertyById(@PathVariable Long propertyId) {
         Property property = propertyService.getPropertyById(propertyId);
         return ResponseEntity.ok(property);
+    }
+*/
+    
+
+
+     @GetMapping
+    public List<propertyDTO> getAllProperties() {
+        return propertyService.getAllProperties();
+    }
+
+    @GetMapping("/{propertyId}")
+    public ResponseEntity<propertyDTO> getPropertyById(@PathVariable Long propertyId) {
+        return propertyService.getPropertyById(propertyId)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+     @GetMapping("/search")
+    public ResponseEntity<List<Property>> getAllProperties(
+            @RequestParam(required = false) String landlord,
+            @RequestParam(required = false) String address,
+            @RequestParam(required = false) String name)
+             {
+        List<Property> properties = propertyService.searchProperties(landlord, address,name);
+        return ResponseEntity.ok(properties);
     }
 
     @PostMapping()

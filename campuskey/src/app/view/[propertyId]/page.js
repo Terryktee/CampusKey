@@ -64,9 +64,9 @@ export default function AccommodationView() {
     <div>
       <Nav />
       <div className="residents-details p-2 relative">
-        <h1 className="text-2xl font-bold ">{data.propertyName}</h1>
+        <h1 className="text-2xl font-bold ">{data.name}</h1>
         <div className="residents-image-gallery h-96 overflow-hidden gap-1 grid grid-cols-3 py-4">
-          <PhotoAlbum />
+          <PhotoAlbum images={data.pictures || []} />
         </div>
       </div>
 
@@ -78,7 +78,15 @@ export default function AccommodationView() {
         <div className="w-2/4 ">
           <h1 className="font-bold text-2xl">Description</h1>
           <p className="text-sm text-muted-foreground text-balance inline-block align-middle py-2">
-            {data.propertyDescription || "No description available."}
+            {data.propertyDescription || "No description available."} <br/>
+            <span>The property also offers the following amenties:</span><br/>
+            {data.amenties && data.amenties.map((amenity, index) => (
+              <span key={index} className="text-blue-500">
+                {index+1}.{amenity.name}{index < data.amenties.length - 1 ? ',' : ''}<br/>
+              </span>
+            ))}
+
+                      
           </p>
         </div>
         <div className="bg-sky-100/20 backdrop-blur-md border border-white/20 shadow-md rounded-xl">

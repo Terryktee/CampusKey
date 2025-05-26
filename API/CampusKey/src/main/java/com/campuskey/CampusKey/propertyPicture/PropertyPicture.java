@@ -21,5 +21,19 @@ public class PropertyPicture {
     @ManyToOne
     @JoinColumn(name = "property_id")
     private Property property;
+
+     public PropertyPicture() {}
+
+    public PropertyPicture(Long id , String imageUrl){
+        this.id=id;
+        this.imageUrl=imageUrl;
+    }
+    public Long getId(){return id;}
+    public String getimageUrl(){return imageUrl;}
+
+    public void setId(Long id){this.id=id;}
+    public void setimageUrl(String imageUrl){this.imageUrl=imageUrl;}
+
+
 }
 

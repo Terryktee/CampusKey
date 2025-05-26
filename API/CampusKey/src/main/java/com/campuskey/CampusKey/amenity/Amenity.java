@@ -22,6 +22,8 @@ public class Amenity {
     @ManyToMany(mappedBy = "amenities")
     private List<Property> properties = new ArrayList<>();
 
+    public Amenity() {}
+
     public Amenity(Long id, String name){
         this.id=id;
         this.name=name;
@@ -32,13 +34,6 @@ public class Amenity {
 
     public String getName(){return name;}
     public void setName(String name){this.name=name;}
-
-    @Override
-    public String toString(){
-        return String.format(
-            "Amenity[ id = %d,name=%s]",id,name
-        );
-    }
 
 }
 

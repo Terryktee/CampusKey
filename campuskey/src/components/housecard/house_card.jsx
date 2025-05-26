@@ -27,23 +27,19 @@ export default function houseCard() {
                 <img src="home.jpg" className="rounded-lg" alt="House Image" />
                 {/* OverView of Verified or not*/}
                 <div className="flex flex-col text-base">
-                    <div className="text-xl">{property.propertyName} <Badge>Verified</Badge></div>
+                    <div className="text-xl">{property.name} <Badge>Verified</Badge></div>
                     <p className="text-xl font-bold text-gray-900 dark:text-white text-end" >{property.propertyPrice}$ per month </p>
                     <div className="flex justify-evenly ">
                         <p>{property.propertyAddress}</p>
                         <p>{property.propertyType}</p>
                     </div>
                     <div className="flex justify-evenly">
-                            <Link href={`/view/${property.propertyId}`}>View</Link>
+                            <Link href={`/view/${property.id}`}>View</Link>
                             <Button className="bg-blue-400">Apply</Button>
                         </div>
                 </div>
             </div>
         </div>
         ))
-            
-    
-
-
     )
 }

@@ -13,9 +13,16 @@ public interface PropertyRepository extends JpaRepository<Property, Long> {
 
     Optional<Property> findByPropertyAddress(String propertyAddress);
 
+    List<Property> findByPropertyNameContaining(String propertyName);
     List<Property> findByLandlord_NameContaining(String landlordName);
 
     List<Property> findByPropertyAddressContaining(String propertyAddress);
 
-    List<Property> findByLandlord_NameContainingAndPropertyAddressContaining(String landlordName, String propertyAddress);
+    List<Property> findByLandlord_NameContainingAndPropertyAddressContainingAndPropertyNameContaining(
+    String landlordName,
+    String propertyAddress,
+    String propertyName
+);
+
 }
+
