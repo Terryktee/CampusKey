@@ -1,3 +1,6 @@
+"use client";
+import { useRouter } from "next/navigation";
+
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -8,6 +11,7 @@ export default function LoginPage({
   className,
   ...props
 }) {
+  const router = useRouter();
   return (
     <div className="flex min-h-svh flex-col items-center justify-center bg-muted p-6 md:p-10">
       <div className="w-full max-w-sm md:max-w-3xl">
@@ -49,7 +53,9 @@ export default function LoginPage({
                         Verify email
                       </a>
                   </div>
-                  <Button type="submit" className="w-full bg-[#0D6CA3]">
+                  <Button type="submit"
+                   className="w-full bg-[#0D6CA3]"
+                   onClick={() => router.push("/home")}>
                     Sign In
                   </Button>
                   <div className="relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t after:border-border">

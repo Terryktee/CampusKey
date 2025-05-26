@@ -1,4 +1,4 @@
-package com.campuskey.CampusKey.Landlord;
+package com.campuskey.CampusKey.landlord;
 
 import java.util.List;
 import java.util.Objects;
@@ -9,21 +9,21 @@ import org.springframework.stereotype.Service;
 import jakarta.transaction.Transactional;
 
 @Service
-public class landlordService {
+public class LandlordService {
 
-    private final landlordRepository landlordRepository;
+    private final LandlordRepository landlordRepository;
 
-    public landlordService(landlordRepository landlordRepository){
+    public LandlordService(LandlordRepository landlordRepository){
         this.landlordRepository = landlordRepository;
     }
     
-    public List<landlord> getlandlords(){
+    public List<Landlord> getlandlords(){
         return landlordRepository.findAll();
     }
 
     
-    public void addNewlandlord(landlord landlord) throws IllegalAccessException{
-        Optional <landlord> landbyOptional = landlordRepository.findByEmail(
+    public void addNewlandlord(Landlord landlord) throws IllegalAccessException{
+        Optional <Landlord> landbyOptional = landlordRepository.findByEmail(
             landlord.getEmail()
         );
 
@@ -44,7 +44,7 @@ public class landlordService {
 
     @Transactional
     public void updatelandlord(Long landlordId,String name,String email ){
-        landlord landlord = landlordRepository.findById(landlordId).
+        Landlord landlord = landlordRepository.findById(landlordId).
         orElseThrow(()-> new IllegalStateException(
             "landlord with id" + landlordId + "does not exist"
         ));
@@ -56,7 +56,7 @@ public class landlordService {
 		if (email != null && 
 		email.length() > 0 &&
 		 !Objects.equals(landlord.getEmail(),email)){
-			Optional<landlord> landlordOptional = landlordRepository.findByEmail(email);
+			Optional<Landlord> landlordOptional = landlordRepository.findByEmail(email);
 			if (landlordOptional.isPresent()){
 				throw new IllegalStateException(" landlord Number taken");
 			}

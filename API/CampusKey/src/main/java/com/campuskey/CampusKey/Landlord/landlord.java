@@ -1,47 +1,52 @@
-package com.campuskey.CampusKey.Landlord;
+package com.campuskey.CampusKey.landlord;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.campuskey.CampusKey.property.Property;
+
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.OneToMany;
+
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "landlord")
-public class landlord {
+public class Landlord {
 
     @Id
-    @SequenceGenerator(
-        name = "landlord_sequence",
-        sequenceName = "landlord_sequence",
-        allocationSize = 1,
-        initialValue = 1
-    )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "landlordId")
+    private Long landlordId;
 
-    @GeneratedValue(
-        strategy = GenerationType.SEQUENCE,
-        generator = "landlord_sequence"
-    )
-    private Long id;
     private String name;
     private String surname;
     private String email;
     private String phone;
 
-    public landlord(){
+    @OneToMany(mappedBy = "landlord", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Property> properties = new ArrayList<>();
+
+    
+    public Landlord(){
 
     }
 
-    public landlord(String name,String surname , String email,String phone){
+    public Landlord(String name,String surname , String email,String phone){
         this.name=name;
         this.surname=surname;
         this.email=email;
         this.phone=phone;
     }
 
-    public Long getId(){return id;}
-    public void setId(Long id){this.id=id;}
+    public Long getId(){return landlordId;}
+    public void setId(Long id){this.landlordId=id;}
 
     public String getName(){return name;}
     public void setName(String name){this.name=name;}
@@ -60,6 +65,6 @@ public class landlord {
     public String toString(){
         return String.format(
             "landlord[id=%d,name=%s,surname=%s,email=%s,phone=%s]",
-            id,name,surname,email,phone);
+            landlordId,name,surname,email,phone);
     }
 }

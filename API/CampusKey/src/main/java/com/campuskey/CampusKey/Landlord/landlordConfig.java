@@ -1,4 +1,4 @@
-package com.campuskey.CampusKey.Landlord;
+package com.campuskey.CampusKey.landlord;
 import java.util.List;
 
 import org.springframework.boot.CommandLineRunner;
@@ -6,12 +6,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class landlordConfig {
+public class LandlordConfig {
     @Bean
-    CommandLineRunner commandLineRunner2(landlordRepository landlordRepository){
+    CommandLineRunner commandLineRunner2(LandlordRepository landlordRepository){
         return args -> {
 
-            landlord landlord1 = new landlord(
+            Landlord landlord1 = new Landlord(
                     
                     "John",
                     "Doe",

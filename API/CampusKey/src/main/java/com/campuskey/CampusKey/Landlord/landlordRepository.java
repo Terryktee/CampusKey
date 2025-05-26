@@ -1,4 +1,4 @@
-package com.campuskey.CampusKey.Landlord;
+package com.campuskey.CampusKey.landlord;
 
 import java.util.Optional;
 
@@ -6,8 +6,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface landlordRepository  extends JpaRepository<landlord,Long> {
+public interface LandlordRepository  extends JpaRepository<Landlord,Long> {
 
-    Optional <landlord> findByEmail(String email);
+    Optional <Landlord> findByEmail(String email);
 }
 //         return "landlord{" +

@@ -1,12 +1,22 @@
+"use client";
 import Nav from "@/components/navbar/nav";
 import Footer from "@/components/footer/footer";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Filters from "@/components/filters/filters";
 import HouseCard from "@/components/housecard/house_card";
-
+import { useEffect,useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const [query, setQuery] = useState("");
+  const router = useRouter();
+
+  const handleSearch = () => {
+    if (!query.trim()) return;
+    router.push(`/search-results?q=${encodeURIComponent(query)}`);
+  };
+
   return (
     <div>
       <Nav />
@@ -15,8 +25,16 @@ export default function Home() {
         <div className="h-56 place-items-center bg-blue-400 py-16 ">
           <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl text-white">Find your off-campus home</h1>
           <div className="flex w-full max-w-lg space-x-2 py-6">
-            <Input type="search" className="rounded-full" placeholder="Search" />
-            <Button type="submit " className="bg-white text-sky-400 rounded-lg">Search</Button>
+            <Input type="search" 
+            className="rounded-full"
+             placeholder="Search"
+             value={query}
+          onChange={(e) => setQuery(e.target.value)}
+           />
+            <Button type="submit "
+             className="bg-white text-sky-400 rounded-lg"
+             onClick={handleSearch}
+             >Search</Button>
           </div>
 
         </div>
@@ -58,10 +76,6 @@ export default function Home() {
           <div className="right-box  p-2 ">
             <h1 className="scroll-m-20 text-2xl font-extrabold tracking-tight lg:text-3xl text-blue-400 text-center">Available off-campus houses</h1>
             <div className=" grid grid-cols-4 gap-2 py-4 text-blue-400 ">
-              <HouseCard />
-              <HouseCard />
-              <HouseCard />
-              <HouseCard />
               <HouseCard />
             </div>
           </div>

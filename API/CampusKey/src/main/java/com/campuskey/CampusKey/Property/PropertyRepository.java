@@ -1,13 +1,21 @@
-package com.campuskey.CampusKey.Property;
+package com.campuskey.CampusKey.property;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface PropertyRepository extends JpaRepository<Property,Long> {
+public interface PropertyRepository extends JpaRepository<Property, Long> {
 
-    Optional <Property> findByPropertyName(String propertyName);
-    Optional <Property> findByPropertyAddress(String propertyAddress);
+    Optional<Property> findByPropertyName(String propertyName);
+
+    Optional<Property> findByPropertyAddress(String propertyAddress);
+
+    List<Property> findByLandlord_NameContaining(String landlordName);
+
+    List<Property> findByPropertyAddressContaining(String propertyAddress);
+
+    List<Property> findByLandlord_NameContainingAndPropertyAddressContaining(String landlordName, String propertyAddress);
 }

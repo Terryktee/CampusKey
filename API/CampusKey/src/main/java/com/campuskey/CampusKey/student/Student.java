@@ -1,11 +1,24 @@
 package com.campuskey.CampusKey.student;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
 import org.hibernate.annotations.DialectOverride.Version;
 
+import com.campuskey.CampusKey.property.Property;
+import com.campuskey.CampusKey.propertyApplication.PropertyApplication;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
+
 import jakarta.persistence.Table;
 
 @Entity
@@ -14,20 +27,9 @@ import jakarta.persistence.Table;
 public class Student {
 
     @Id
-    @SequenceGenerator(
-        name = "student_sequence",
-        sequenceName="student_sequence",
-        allocationSize = 1,
-        initialValue = 1
-    )
-    
-    @GeneratedValue(
-        strategy = GenerationType.SEQUENCE,
-        generator= "student_sequence"
-        
-        )
-
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "studentId")
+    private Long studentId;
 
     private String name;
     private String surname;
@@ -35,6 +37,18 @@ public class Student {
     private String phone;
     private String studentNumber;
     private Integer studentYear;
+    
+    
+    @ManyToMany
+    @JoinTable(
+        name = "student_property",
+        joinColumns = @JoinColumn(name = "id"),
+        inverseJoinColumns = @JoinColumn(name = "propertyId")
+    )
+    private Set<Property> properties;
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
+    private List<PropertyApplication> applications = new ArrayList<>();
+
 
     // No-args constructor required by JPA
     public Student() {
@@ -51,8 +65,8 @@ public class Student {
 
     // Getters and setters...
 
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+    public Long getId() { return studentId; }
+    public void setId(Long studentId) { this.studentId = studentId; }
 
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
@@ -76,6 +90,6 @@ public class Student {
     public String toString() {
         return String.format(
             "Student[id=%d, name=%s, surname=%s, email=%s, phone=%s, studentNumber=%s, studentYear=%d]",
-            id, name, surname, email, phone, studentNumber, studentYear);
+            studentId, name, surname, email, phone, studentNumber, studentYear);
     }
 }

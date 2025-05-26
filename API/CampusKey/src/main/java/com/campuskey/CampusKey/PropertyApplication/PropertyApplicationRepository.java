@@ -1,4 +1,4 @@
-package com.campuskey.CampusKey.PropertyApplication;
+package com.campuskey.CampusKey.propertyApplication;
 
 import java.util.Optional;
 

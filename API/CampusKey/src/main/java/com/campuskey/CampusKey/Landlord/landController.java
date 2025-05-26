@@ -1,4 +1,6 @@
-package com.campuskey.CampusKey.Landlord;
+package com.campuskey.CampusKey.landlord;
+
+
 
 import java.util.List;
 
@@ -15,22 +17,22 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("api/v1/landlord")
-public class landController {
+public class LandController {
 
-    private final landlordService landlordService;
+    private final LandlordService landlordService;
 
     @Autowired
-    public landController(landlordService landlordService){
+    public LandController(LandlordService landlordService){
         this.landlordService = landlordService;
     }
 
     @GetMapping
-    public List<landlord> getLandlord(){
+    public List<Landlord> getLandlord(){
         return landlordService.getlandlords();
     }
 
     @PostMapping
-    public void registerNewLandlord(@RequestBody landlord landlord) throws IllegalAccessException{
+    public void registerNewLandlord(@RequestBody Landlord landlord) throws IllegalAccessException{
         landlordService.addNewlandlord(landlord);
     }
 
