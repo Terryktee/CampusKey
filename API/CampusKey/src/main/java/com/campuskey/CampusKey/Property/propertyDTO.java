@@ -69,4 +69,6 @@ public class propertyDTO {
 
     public void setPropertyDescription(String propertyDescription) {this.propertyDescription = propertyDescription;}
 
+    
+
 }

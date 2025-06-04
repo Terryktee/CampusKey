@@ -144,7 +144,7 @@ export default function Search() {
           ) : (
             results.map((property) => (
               <div
-                key={property.propertyId}
+                key={property.id}
                 className="w-[740px] rounded-lg shadow-lg p-2 bg-blue-400 flex flex-col gap-y-2"
               >
                 <h1>Resident: {property.propertyName}</h1>

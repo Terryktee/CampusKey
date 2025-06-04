@@ -13,20 +13,20 @@ export default function Home() {
           <li><a href="/team">Team</a></li>
           <li><a href="/how-it-works">How it works</a></li>
           <li><a href="/careers">Careers</a></li>
-          <li><a href="/about">About Us</a></li>
+          <li><a href="/about-us">About Us</a></li>
         </ul>
       </div>
       <div>
         <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">Resources</h3>
         <ul>
-          <li><a href="/help-center">Help Center</a></li>
+          <li><a href="/help-centre">Help Center</a></li>
           <li><a href="/student-guide">Student Guide</a></li>
         </ul>
       </div>
       <div>
         <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">Legal</h3>
         <ul>
-          <li><a href="/terms">Terms of Services</a></li>
+          <li><a href="/terms-and-conditions">Terms of Services</a></li>
           <li><a href="/privacy-policy">Privacy Policy</a></li>
           <li><a href="/disclaimer">Disclaimer</a></li>
         </ul>
