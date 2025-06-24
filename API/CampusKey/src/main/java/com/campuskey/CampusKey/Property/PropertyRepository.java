@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PropertyRepository extends JpaRepository<Property, Long> {
+    EntityManager em;
 
     Optional<Property> findByPropertyName(String propertyName);
 
@@ -26,20 +27,24 @@ public interface PropertyRepository extends JpaRepository<Property, Long> {
     String propertyName
 );
 
-@Query("SELECT DISTINCT p FROM Property p " +
-       "LEFT JOIN p.amenities a " +
-       "WHERE " +
-       "(:landlordName IS NULL OR LOWER(p.landlord.name) LIKE LOWER(CONCAT('%', :landlordName, '%'))) AND " +
-       "(:propertyAddress IS NULL OR LOWER(p.propertyAddress) LIKE LOWER(CONCAT('%', :propertyAddress, '%'))) AND " +
-       "(:propertyName IS NULL OR LOWER(p.propertyName) LIKE LOWER(CONCAT('%', :propertyName, '%'))) AND " +
-       "(:roomTypes IS NULL OR p.roomType IN :roomTypes) AND " +
-       "(:amenities IS NULL OR a.name IN :amenities)")
 List<Property> findWithFilters(
+    //finish the code
     @Param("landlordName") String landlordName,
     @Param("propertyAddress") String propertyAddress,
     @Param("propertyName") String propertyName,
     @Param("roomTypes") List<String> roomTypes,
     @Param("amenities") List<String> amenities
+
+    CriteriaBuilder cb = em.getCriteriaBuilder();
+        CriteriaQuery<Property> cq = cb.createQuery(Property.class);
+
+        Root<Property> book = cq.from(Property.class);
+        Predicate authorNamePredicate = cb.equal(book.get("author"), authorName);
+        Predicate titlePredicate = cb.like(book.get("title"), "%" + title + "%");
+        cq.where(authorNamePredicate, titlePredicate);
+
+        TypedQuery<Book> query = em.createQuery(cq);
+        return query.getResultList();
 );
 
 

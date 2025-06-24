@@ -33,6 +33,18 @@ public class PropertyService {
                 .collect(Collectors.toList());
     }
 
+    /**
+ * Filters properties using the provided criteria.
+ * Pass `null` or empty values for any filters you want to skip.
+ */
+
+    public List<propertyDTO> getbyFiltering(String landlordName , String propertyAddress , String propertyName, List<String> roomTypes , List<String> amenities){
+        return propertyRepository.findWithFilters(landlordName ,  propertyAddress , propertyName,  roomTypes , amenities) 
+        .Stream()
+        .map(propertyDTO::new)
+        .collect(Collectors.toList());
+    }
+
     public Optional<propertyDTO> getPropertyById(Long propertyId) {
         return propertyRepository.findById(propertyId)
                 .map(propertyDTO::new);
